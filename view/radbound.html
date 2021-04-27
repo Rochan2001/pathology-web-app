@@ -7,15 +7,42 @@
     <title>pathology</title>
     <script src="../openseadragon/openseadragon.min.js"></script>
     <script src="../annotations/openseadragon-annotorious.min.js"></script>
- <link rel="stylesheet" href="../annotations/annotorious.min.css"> 
- 
+    <link rel="stylesheet" href="../annotations/annotorious.min.css" />
   </head>
   <body>
-      <div id="toolbar-container"></div>
-    <div id="openseadragon" style="width: 800px; height: 600px;"></div>
-    
+    <center>
+      <div
+        class="row"
+        style="display: grid; grid-template-columns: 1fr 1fr; width: 100%"
+      >
+        <div class="column">
+          <div id="toolbar-container1"></div>
+          <div
+            id="openseadragon1"
+            style="
+              width: 600px;
+              height: 600px;
+              justify-self: center;
+              border-style: solid;
+            "
+          ></div>
+        </div>
+        <div class="column">
+          <div id="toolbar-container2"></div>
+          <div
+            id="openseadragon2"
+            style="
+              width: 600px;
+              height: 600px;
+              justify-self: center;
+              border-style: solid;
+            "
+          ></div>
+        </div>
+      </div>
+    </center>
+
     <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-toolbar@latest/dist/annotorious-toolbar.min.js"></script>
     <script src="./view.js"></script>
   </body>
 </html>
-
