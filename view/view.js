@@ -4,6 +4,7 @@ var viewer1 = OpenSeadragon({
   tileSources: "../output_images/mydz.dzi",
   visibilityRatio: 1.0,
   constrainDuringPan: true,
+  debugMode: false,
 });
 
 var viewer2 = OpenSeadragon({
@@ -12,7 +13,47 @@ var viewer2 = OpenSeadragon({
   tileSources: "../output_images/mydz_mask.dzi",
   visibilityRatio: 1.0,
   constrainDuringPan: true,
+  debugMode: false,
 });
+
+viewer1.addHandler("open", () => {
+  let customButton = new OpenSeadragon.Button({
+    tooltip: "Debug",
+    srcRest: "../images/circle-cropped.png",
+    srcGroup: "../images/circle-cropped.png",
+    srcHover: "../images/circle-cropped.png",
+    srcDown: "../images/circle-cropped.png",
+  });
+
+  customButton.addHandler("click", () => {
+    debug();
+  });
+
+  viewer1.buttons.buttons.push(customButton);
+  viewer1.buttons.element.appendChild(customButton.element);
+});
+
+var flag = 0;
+
+function debug() {
+  if (flag == 0) {
+    flag = 1;
+    debugModeOn();
+  } else {
+    flag = 0;
+    debugModeOff();
+  }
+}
+
+function debugModeOn() {
+  viewer1.setDebugMode(true);
+  viewer2.setDebugMode(true);
+}
+
+function debugModeOff() {
+  viewer1.setDebugMode(false);
+  viewer2.setDebugMode(false);
+}
 
 var anno1 = OpenSeadragon.Annotorious(viewer2);
 var anno2 = OpenSeadragon.Annotorious(viewer1);
